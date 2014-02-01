@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2007 The Android Open Source Project
+<!--
+     Copyright (C) 2007 The Android Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -14,28 +15,60 @@
      limitations under the License.
 -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" 
-    android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
 
-    <ProgressBar android:id="@+android:id/progress_large"
+    <ProgressBar
+        android:id="@+android:id/progress_large"
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <ProgressBar android:id="@+android:id/progress"
+    <ProgressBar
+        android:id="@+android:id/progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <ProgressBar android:id="@+android:id/progress_small"
+    <ProgressBar
+        android:id="@+android:id/progress_small"
         style="?android:attr/progressBarStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <ProgressBar android:id="@+android:id/progress_small_title"
+    <ProgressBar
+        android:id="@+android:id/progress_small_title"
         style="?android:attr/progressBarStyleSmallTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+    <!--
+         TODO 1.自定义Progress Bar 精确型 
+        按照背景图片类型进行自定义分为两种：
+    -->
+
+
+    <!-- 1、纯色值 -->
+    <ProgressBar
+        android:id="@+id/progress_h_cust_bg_color"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_margin="5dp"
+        android:progress="30"
+        android:progressDrawable="@drawable/progress_cust_bg_color"
+        android:secondaryProgress="60" />
+
+    <!-- 2、png图片 -->
+    <ProgressBar
+        android:id="@+id/progress_h_cust_bg_png"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_margin="5dp"
+        android:progress="30"
+        android:progressDrawable="@drawable/progress_cust_bg_png"
+        android:secondaryProgress="60" />
 
 </LinearLayout>

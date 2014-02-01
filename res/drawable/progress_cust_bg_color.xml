@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <!-- layer-list的item顺序会影响显示，必须按照这个顺序才能全部显示出来 -->
+
+    <item android:id="@android:id/background">
+        <shape>
+            <gradient
+                android:angle="270"
+                android:centerColor="#ffffff"
+                android:centerY="1.0"
+                android:endColor="#ffffff"
+                android:startColor="#ffffff" />
+        </shape>
+    </item>
+    <item android:id="@android:id/secondaryProgress">
+        <clip>
+            <shape>
+                <gradient
+                    android:angle="270"
+                    android:centerColor="#ff0000"
+                    android:centerY="1.0"
+                    android:endColor="#ff0000"
+                    android:startColor="#ff0000" />
+            </shape>
+        </clip>
+    </item>
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape>
+                <gradient
+                    android:angle="270"
+                    android:centerColor="#00ff00"
+                    android:centerY="1.0"
+                    android:endColor="#00ff00"
+                    android:startColor="#00ff00" />
+            </shape>
+        </clip>
+    </item>
+
+</layer-list>

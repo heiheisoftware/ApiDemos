@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <!-- layer-list的item顺序会影响显示，必须按照这个顺序才能全部显示出来 -->
+    <!-- 下面把 @drawable/progress_hori_background 部分替换成png图片就可以了，注意android:scaleWidth这个属性是必须的 -->
+    <item
+        android:id="@android:id/background"
+        android:drawable="@drawable/progress_hori_background"/>
+    
+    <item android:id="@android:id/secondaryProgress">
+        <scale
+            android:drawable="@drawable/progress_hori_secondary_progress"
+            android:scaleWidth="100%" />
+    </item>
+    
+    <item android:id="@android:id/progress">
+        <scale
+            android:drawable="@drawable/progress_hori_progress"
+            android:scaleWidth="100%" />
+    </item>
+
+</layer-list>
