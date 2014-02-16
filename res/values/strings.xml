@@ -1481,4 +1481,6 @@
     <string name="keystore_entry_alias">Entry alias:</string>
     <string name="keystore_generate">Generate</string>
     <string name="keystore_no_alias_error">Must supply an alias</string>
+    
+    <string name="cust_area">"自定义区域"</string>
   </resources>
