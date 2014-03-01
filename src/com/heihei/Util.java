@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.telephony.TelephonyManager;
 import android.view.View;
+import android.view.View.MeasureSpec;
 import android.view.inputmethod.InputMethodManager;
 
 public class Util {
@@ -36,6 +37,26 @@ public class Util {
 
         InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.showSoftInput(view, 0);
+    }
+    
+    /**
+     * 构造view的缓存生成一个Bitmap
+     * @param v
+     * @return
+     */
+    public static Bitmap buildCacheBitmap(View v) {
+        v.setDrawingCacheEnabled(true);
+
+        // this is the important code :)  
+        // Without it the view will have a dimension of 0,0 and the bitmap will be null          
+        v.measure(MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED),
+                     MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
+        v.layout(0, 0, v.getMeasuredWidth(), v.getMeasuredHeight());
+
+        v.buildDrawingCache(true);
+        Bitmap b = Bitmap.createBitmap(v.getDrawingCache());
+        v.setDrawingCacheEnabled(false); // clear drawing cache
+        return b;
     }
     
     /**
