@@ -4,15 +4,15 @@
 
     <item
         android:drawable="@drawable/loading_bar_1"
-        android:duration="200"/>
+        android:duration="100"/>
     <item
         android:drawable="@drawable/loading_bar_2"
-        android:duration="200"/>
+        android:duration="100"/>
     <item
         android:drawable="@drawable/loading_bar_3"
-        android:duration="200"/>
+        android:duration="100"/>
     <item
         android:drawable="@drawable/loading_bar_4"
-        android:duration="200"/>
+        android:duration="100"/>
 
 </animation-list>

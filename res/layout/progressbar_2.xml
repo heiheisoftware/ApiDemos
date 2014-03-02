@@ -12,7 +12,7 @@
      distributed under the License is distributed on an "AS IS" BASIS,
      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
      See the License for the specific language governing permissions and
-     limitations under the License.
+     limitations under the License.
 -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -23,59 +23,78 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical" >
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <ProgressBar
+                android:id="@+android:id/progress_large"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ProgressBar
+                android:id="@+android:id/progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ProgressBar
+                android:id="@+android:id/progress_small"
+                style="?android:attr/progressBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ProgressBar
+                android:id="@+android:id/progress_small_title"
+                style="?android:attr/progressBarStyleSmallTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
 
         <ProgressBar
             android:id="@+android:id/progress_large"
             style="?android:attr/progressBarStyleLarge"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <ProgressBar
-            android:id="@+android:id/progress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <ProgressBar
-            android:id="@+android:id/progress_small"
-            style="?android:attr/progressBarStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <ProgressBar
-            android:id="@+android:id/progress_small_title"
-            style="?android:attr/progressBarStyleSmallTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-
-    <!-- 演示 android:indeterminate="true" 和 android:attr/progressBarStyleHorizontal属性的组合的效果 -->
-    <ProgressBar
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:indeterminateDrawable="@drawable/progress_cust_indeterminate_bg"
+            android:indeterminateDuration="500" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <!-- 演示 android:indeterminate="true" 和  android:attr/progressBarStyleHorizontal属性的组合的效果 -->
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
             android:indeterminate="true" />
-    
-    <!-- 自定义区域 -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="@string/cust_area" />
 
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="10dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:indeterminate="true"
+            android:indeterminateDrawable="@drawable/ca_downloading" />
+    </LinearLayout>
 
-    <ProgressBar
-        android:id="@+android:id/progress_large"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:indeterminateDuration="500"
-        android:indeterminateDrawable="@drawable/progress_cust_indeterminate_bg" />
-
-    <!-- 自定义Progress Bar 精确型按照背景图片类型进行自定义分为两种：-->
+    <!-- 自定义Progress Bar 精确型按照背景图片类型进行自定义分为两种： -->
     <!-- 1、纯色值 -->
+
     <ProgressBar
         android:id="@+id/progress_h_cust_bg_color"
         style="?android:attr/progressBarStyleHorizontal"
@@ -87,6 +106,7 @@
         android:secondaryProgress="60" />
 
     <!-- 2、png图片 -->
+
     <ProgressBar
         android:id="@+id/progress_h_cust_bg_png"
         style="?android:attr/progressBarStyleHorizontal"
