@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- common ids -->
+    <item name="empty_view" type="id"/>
+    <item name="ok" type="id"/>
+    <item name="cancel" type="id"/>
+    <item name="close" type="id"/>
+
+    <!-- common string -->
+    <string name="ok">"确定"</string>
+    <string name="cancel">"取消"</string>
+    <string name="close">"关闭"</string>
+    <string name="prompt">"提示"</string>
+    <string name="waiting_please">"请稍候…"</string>
+
+    <!-- common drawable -->
+    <drawable name="black">#ff000000</drawable>
+    <drawable name="white">#ffffffff</drawable>
+    <drawable name="transparent">#00000000</drawable>
+
+    <!-- common color -->
+    <color name="black">#ff000000</color>
+    <color name="white">#ffffffff</color>
+    <color name="transparent">#00000000</color>
+</resources>

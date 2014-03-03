@@ -24,8 +24,6 @@
     <drawable name="translucent_background">#e0000000</drawable>
     <drawable name="transparent_background">#00000000</drawable>
 
-    <drawable name="white">#ffffff</drawable>
-    
     <color name="solid_red">#f00</color>
     <color name="solid_blue">#0000ff</color>
     <color name="solid_green">#f0f0</color>
