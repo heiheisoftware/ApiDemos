@@ -2914,6 +2914,14 @@
                 <category android:name="android.intent.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
+        
+        <activity android:name=".view.ToastDemoActivity" 
+            android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
     </application>
 
     <instrumentation android:name=".app.LocalSampleInstrumentation"

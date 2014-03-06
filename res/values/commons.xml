@@ -6,6 +6,8 @@
     <item name="ok" type="id"/>
     <item name="cancel" type="id"/>
     <item name="close" type="id"/>
+    <item name="title" type="id"/>
+    <item name="back" type="id"/>
 
     <!-- common string -->
     <string name="ok">"确定"</string>
@@ -23,4 +25,4 @@
     <color name="black">#ff000000</color>
     <color name="white">#ffffffff</color>
     <color name="transparent">#00000000</color>
-</resources>
+</resources>
