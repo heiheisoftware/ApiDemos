@@ -1548,7 +1548,7 @@
                 <category android:name="android.intent.category.SAMPLE_CODE"/>
             </intent-filter>
         </activity>
-
+        
         <activity android:name=".view.Tabs5" android:label="Views/Tabs/5. Scrollable">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -1884,7 +1884,16 @@
                 <category android:name="android.intent.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
-
+        
+        <activity android:name=".view.ToastDemoActivity" 
+            android:label="Views/Toast"
+            android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        
         <activity android:name=".view.ExpandableList1" android:label="Views/Expandable Lists/1. Custom Adapter">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -2915,13 +2924,6 @@
             </intent-filter>
         </activity>
         
-        <activity android:name=".view.ToastDemoActivity" 
-            android:windowSoftInputMode="adjustPan">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.SAMPLE_CODE" />
-            </intent-filter>
-        </activity>
     </application>
 
     <instrumentation android:name=".app.LocalSampleInstrumentation"

@@ -25,4 +25,6 @@
     <color name="black">#ff000000</color>
     <color name="white">#ffffffff</color>
     <color name="transparent">#00000000</color>
-</resources>
+
+    <dimen name="test_dimen_25">25dp</dimen>
+    </resources>
