@@ -1,5 +1,5 @@
 
-package com.heihei;
+package com.heihei.util;
 
 import android.content.Context;
 import android.graphics.Bitmap;
