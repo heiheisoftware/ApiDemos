@@ -1297,4 +1297,9 @@
     <string name="symbol_percent">"演示一个百分号的输出直接写：% 或者这么写："&#37;</string>
     <!-- 使用%%来输出，其实是java formatter的限制 -->
     <string name="symbol_dynamic_percent">"演示动态输出一个带百分号的数字："<xliff:g id="percent">%d</xliff:g>"%%"</string>
+    <!-- xml预定义的实体以下五个，但是注意单双引号并不能使用 &apos; 和 &quot; -->
+    <string name="symbol_xml_predefine">
+        "演示xml预定义的5个实体（注意单双引号的实现）：\n小于号   &lt;   大于号   &gt; \n和号   &amp; \n双引号   \"    单引号   \'"
+    </string>
+    
 </resources>

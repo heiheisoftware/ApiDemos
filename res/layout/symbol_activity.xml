@@ -2,20 +2,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="5dp"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:padding="5dp" >
 
     <TextView
         android:id="@+id/symbol_percent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/symbol_percent" />
-    
+
     <TextView
         android:id="@+id/symbol_dynamic_percent"
-        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="@string/symbol_dynamic_percent" />
+
+    <TextView
+        android:id="@+id/symbol_xml_predefine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/symbol_xml_predefine" />
 
 </LinearLayout>
