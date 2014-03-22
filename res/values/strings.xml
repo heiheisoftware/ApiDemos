@@ -1302,4 +1302,10 @@
         "演示xml预定义的5个实体（注意单双引号的实现）：\n小于号   &lt;   大于号   &gt; \n和号   &amp; \n双引号   \"    单引号   \'"
     </string>
     
+    <string name="symbol_list">
+        "演示列表的一种实现（但是这种实现灵活性不高）："
+        "\n<ol><li>列表1</li>"
+        "\n<li>列表2</li></ol>"
+    </string>
+    
 </resources>
