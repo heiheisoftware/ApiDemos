@@ -22,6 +22,9 @@ import android.webkit.WebView;
 
 import com.example.android.apis.R;
 
+import java.io.IOException;
+import java.io.InputStream;
+
 
 /**
  * Sample creating 1 webviews.
@@ -40,5 +43,23 @@ public class WebView1 extends Activity {
         
         wv = (WebView) findViewById(R.id.wv1);
         wv.loadData("<a href='x'>Hello World! - 1</a>", mimeType, null);
+        
+//        String htmlContent = null;
+//        try {
+//            InputStream is = getAssets().open("retry.html");
+//            int size = is.available();
+//            byte[] buffer = new byte[size];
+//            is.read(buffer);
+//            is.close();
+//            
+//            // Convert the buffer into a string.
+//            htmlContent = new String(buffer);
+//        } catch (IOException e) {
+//            // Should never happen!
+//            throw new RuntimeException(e);
+//        }
+//        
+//        // 使用 webView.loadData(htmlContent, "text/html", "UTF-8")中文会出现乱码
+//        webView.loadDataWithBaseURL(null, htmlContent, "text/html", "UTF-8", null);
     }
 }

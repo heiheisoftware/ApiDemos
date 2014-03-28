@@ -14,6 +14,7 @@
     <string name="cancel">"取消"</string>
     <string name="close">"关闭"</string>
     <string name="prompt">"提示"</string>
+    <string name="retry">重试</string>
     <string name="waiting_please">"请稍候…"</string>
 
     <!-- common drawable -->
