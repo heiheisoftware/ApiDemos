@@ -10,6 +10,11 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.inputmethod.InputMethodManager;
 
+/**
+ * 编码解码库（md5 base64等）http://commons.apache.org/proper/commons-codec/
+ * @author linqing
+ *
+ */
 public class Util {
 
     public static boolean isSimReady(Context context) {
