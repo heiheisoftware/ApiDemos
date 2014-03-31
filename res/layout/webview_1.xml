@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2007 The Android Open Source Project
+<!--
+     Copyright (C) 2007 The Android Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,20 +16,39 @@
 -->
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" 
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
-    
-    
+    android:orientation="vertical" >
+
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        
-        <WebView android:id="@+id/wv1"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="演示加载本地字符串"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <WebView
+            android:id="@+id/local_string"
             android:layout_width="match_parent"
-            />
+            android:layout_height="wrap_content"
+            android:minHeight="50dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="演示加载本地html（适用于html错误页面的自定义等场景）"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <WebView
+            android:id="@+id/local_html"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="50dp" />
     </LinearLayout>
-        
- </ScrollView>        
+
+</ScrollView>

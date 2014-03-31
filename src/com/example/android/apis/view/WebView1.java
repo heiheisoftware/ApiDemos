@@ -39,27 +39,32 @@ public class WebView1 extends Activity {
         
         final String mimeType = "text/html";
         
-        WebView wv;
+        WebView localString = (WebView) findViewById(R.id.local_string);
+        localString.loadData("<a href='x'>Hello World! - 1</a>", mimeType, null);
         
-        wv = (WebView) findViewById(R.id.wv1);
-        wv.loadData("<a href='x'>Hello World! - 1</a>", mimeType, null);
+        WebView localHtml = (WebView) findViewById(R.id.local_html);
+        loadLocalHtml(localHtml);
+    }
+
+    private void loadLocalHtml(WebView localHtml) {
+        String htmlContent = null;
+        InputStream is = null;
+        try {
+            is = getAssets().open("retry.html");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            
+            // Convert the buffer into a string.
+            htmlContent = new String(buffer);
+        } catch (IOException e) {
+            // Should never happen!
+            throw new RuntimeException(e);
+        } finally {
+            if (is != null) try { is.close(); } catch (IOException e) { e.printStackTrace(); } 
+        }
         
-//        String htmlContent = null;
-//        try {
-//            InputStream is = getAssets().open("retry.html");
-//            int size = is.available();
-//            byte[] buffer = new byte[size];
-//            is.read(buffer);
-//            is.close();
-//            
-//            // Convert the buffer into a string.
-//            htmlContent = new String(buffer);
-//        } catch (IOException e) {
-//            // Should never happen!
-//            throw new RuntimeException(e);
-//        }
-//        
-//        // 使用 webView.loadData(htmlContent, "text/html", "UTF-8")中文会出现乱码
-//        webView.loadDataWithBaseURL(null, htmlContent, "text/html", "UTF-8", null);
+        // 使用 webView.loadData(htmlContent, "text/html", "UTF-8")中文会出现乱码
+        localHtml.loadDataWithBaseURL(null, htmlContent, "text/html", "UTF-8", null);
     }
 }
