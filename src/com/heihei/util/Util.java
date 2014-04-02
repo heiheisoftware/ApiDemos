@@ -2,13 +2,17 @@
 package com.heihei.util;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
+import android.net.Uri;
 import android.telephony.TelephonyManager;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.inputmethod.InputMethodManager;
+
+import java.io.File;
 
 /**
  * 编码解码库（md5 base64等）http://commons.apache.org/proper/commons-codec/
@@ -103,4 +107,34 @@ public class Util {
         }
         return inSampleSize;
     }
+    
+    public static void installApkCheckMd5(Context c, File file, String md5Str) {
+        //      try {
+        //      if (TextUtils.isEmpty(md5Str) || !md5Str.equals(MD5Util.md5Hex(savedFile))) {
+        //          Util.showToast(c, R.string.upgrade_file_check);
+        //          return;
+        //      }
+        //  } catch (IOException e) {
+        //      e.printStackTrace();
+        //      Util.showToast(c, R.string.upgrade_file_check);
+        //      return;
+        //  }
+
+        installApk(c, file);
+    }
+
+    /**
+     * note that: Intent.FLAG_ACTIVITY_NEW_TASK
+     * @param c
+     * @param file
+     */
+    public static void installApk(Context c, File file) {
+      Intent intent = new Intent();
+      // in case of upgrade: MIUI 4.1.1(or other 4.x.x like samsung) PackageInstaller 
+      // will exists immediately after apk installed without Intent.FLAG_ACTIVITY_NEW_TASK
+      intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); 
+      intent.setAction(Intent.ACTION_VIEW);
+      intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
+      c.startActivity(intent);
+  }
 }
