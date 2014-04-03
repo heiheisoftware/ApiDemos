@@ -142,7 +142,7 @@ public class Util {
 
     /**
      * overridePendingTransition() should behind the finish() or animation won't work
-     * key: 退出动画  退出  动画  
+     * @key 退出动画  退出  动画  
      * @param activity
      */
     public static void finishActivityAnim(Activity activity) {
@@ -152,7 +152,7 @@ public class Util {
     
     /**
      * overridePendingTransition() should behind the startActivity() or animation won't work
-     * key: 启动动画  启动  动画
+     * @key 启动动画  启动  动画
      * @param activity
      */
     public static void startActivityAnim(Activity activity, Intent intent) {
