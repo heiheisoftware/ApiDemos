@@ -1,5 +1,6 @@
 从Android SDK API Level 18的ApiDemos创建出来的工程
 
+函数或者类采用@key来标注和这个函数或者类相关的关键字
 
 The API Demos application includes a variety of small applications 
 that illustrate the use of various Android APIs. It includes samples of:
