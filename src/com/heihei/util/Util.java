@@ -1,6 +1,7 @@
 
 package com.heihei.util;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -11,6 +12,8 @@ import android.telephony.TelephonyManager;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.inputmethod.InputMethodManager;
+
+import com.example.android.apis.R;
 
 import java.io.File;
 
@@ -27,8 +30,8 @@ public class Util {
     }
 
     public static boolean isNetworkConnected(Context context) {
-        ConnectivityManager connectivity = (ConnectivityManager) 
-            context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager connectivity = (ConnectivityManager)
+                context.getSystemService(Context.CONNECTIVITY_SERVICE);
         return connectivity.getActiveNetworkInfo() != null;
     }
 
@@ -47,7 +50,7 @@ public class Util {
         InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.showSoftInput(view, 0);
     }
-    
+
     /**
      * 构造view的缓存生成一个Bitmap
      * @param v
@@ -67,7 +70,7 @@ public class Util {
         v.setDrawingCacheEnabled(false); // clear drawing cache
         return b;
     }
-    
+
     /**
      * 
      * @param file
@@ -79,14 +82,14 @@ public class Util {
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
         BitmapFactory.decodeFile(file, options);
-        
+
         options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
         options.inJustDecodeBounds = false;
-        
+
         Bitmap b = BitmapFactory.decodeFile(file, options);
         return b;
     }
-    
+
     public static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
         // Raw height and width of image
         final int height = options.outHeight;
@@ -107,7 +110,7 @@ public class Util {
         }
         return inSampleSize;
     }
-    
+
     public static void installApkCheckMd5(Context c, File file, String md5Str) {
         //      try {
         //      if (TextUtils.isEmpty(md5Str) || !md5Str.equals(MD5Util.md5Hex(savedFile))) {
@@ -119,7 +122,6 @@ public class Util {
         //      Util.showToast(c, R.string.upgrade_file_check);
         //      return;
         //  }
-
         installApk(c, file);
     }
 
@@ -129,12 +131,32 @@ public class Util {
      * @param file
      */
     public static void installApk(Context c, File file) {
-      Intent intent = new Intent();
-      // in case of upgrade: MIUI 4.1.1(or other 4.x.x like samsung) PackageInstaller 
-      // will exists immediately after apk installed without Intent.FLAG_ACTIVITY_NEW_TASK
-      intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); 
-      intent.setAction(Intent.ACTION_VIEW);
-      intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
-      c.startActivity(intent);
-  }
+        Intent intent = new Intent();
+        // in case of upgrade: MIUI 4.1.1(or other 4.x.x like samsung) PackageInstaller 
+        // will exists immediately after apk installed without Intent.FLAG_ACTIVITY_NEW_TASK
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setAction(Intent.ACTION_VIEW);
+        intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
+        c.startActivity(intent);
+    }
+
+    /**
+     * overridePendingTransition() should behind the finish() or animation won't work
+     * key: 退出动画  退出  动画  
+     * @param activity
+     */
+    public static void finishActivityAnim(Activity activity) {
+        activity.finish();
+        activity.overridePendingTransition(R.anim.finish_in_from_left, R.anim.finish_out_to_right);
+    }
+    
+    /**
+     * overridePendingTransition() should behind the startActivity() or animation won't work
+     * key: 启动动画  启动  动画
+     * @param activity
+     */
+    public static void startActivityAnim(Activity activity, Intent intent) {
+        activity.startActivity(intent);
+        activity.overridePendingTransition(R.anim.start_activity_in_from_right, R.anim.start_activity_out_to_left);
+    }
 }

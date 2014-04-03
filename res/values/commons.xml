@@ -28,4 +28,6 @@
     <color name="transparent">#00000000</color>
 
     <dimen name="test_dimen_25">25dp</dimen>
-    </resources>
+    
+    
+    <integer name="animation_duration">250</integer></resources>

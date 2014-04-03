@@ -25,6 +25,8 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import com.heihei.util.Util;
+
 import java.text.Collator;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -144,6 +146,6 @@ public class ApiDemos extends ListActivity {
         Map<String, Object> map = (Map<String, Object>)l.getItemAtPosition(position);
 
         Intent intent = (Intent) map.get("intent");
-        startActivity(intent);
+        Util.startActivityAnim(this, intent);
     }
 }

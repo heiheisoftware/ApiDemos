@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.heihei.util.Util;
+
 public class SymbolActivity extends Activity {
 
     private TextView mTvSymbolDynamicPercent;
@@ -17,4 +19,9 @@ public class SymbolActivity extends Activity {
         mTvSymbolDynamicPercent.setText(getString(R.string.symbol_dynamic_percent, 10));
     }
 
+    @Override
+    public void onBackPressed() {
+        Util.finishActivityAnim(this);
+    }
+    
 }
