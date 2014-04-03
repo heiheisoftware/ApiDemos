@@ -59,7 +59,7 @@ public class Link extends Activity {
 //    <u>
     public static final String HTML_DEMO = "<h1>标题1</h1><h2>标题2</h2><h3>标题3</h3><h4>标题4</h4><h5>标题5</h5><h6>标题6</h6>" 
             + "<p>描述</p>" 
-            + "<font color=\"#FF0000\">颜色</font>演示" 
+            + "<font color=\"#FF0000\">颜色</font> <font size=\"7\" color=\"#ffff\">字号</font>演示" 
     		+ "<br/>普通字体  <b>b粗体</b>"
     		+ "<br/>普通字体  <strong>strong粗体</strong>"
     		+ "<br/><u>下划线</u>"
