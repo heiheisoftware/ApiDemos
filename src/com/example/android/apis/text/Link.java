@@ -30,6 +30,42 @@ import android.text.style.URLSpan;
 import android.widget.TextView;
 
 public class Link extends Activity {
+    
+//    <a href="...">
+//    <b>
+//    <big>
+//    <blockquote>
+//    <br>
+//    <cite>
+//    <dfn>
+//    <div align="...">
+//    <em>
+//    <font size="..." color="..." face="...">
+//    <h1>
+//    <h2>
+//    <h3>
+//    <h4>
+//    <h5>
+//    <h6>
+//    <i>
+//    <img src="...">
+//    <p>
+//    <small>
+//    <strike>
+//    <strong>
+//    <sub>
+//    <sup>
+//    <tt>
+//    <u>
+    public static final String HTML_DEMO = "<h1>标题1</h1><h2>标题2</h2><h3>标题3</h3><h4>标题4</h4><h5>标题5</h5><h6>标题6</h6>" 
+            + "<p>描述</p>" 
+            + "<font color=\"#FF0000\">颜色</font>演示" 
+    		+ "<br/>普通字体  <b>b粗体</b>"
+    		+ "<br/>普通字体  <strong>strong粗体</strong>"
+    		+ "<br/><u>下划线</u>"
+    		+ "<br/><i>斜体</i>  貌似不支持"
+    		;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,5 +116,8 @@ public class Link extends Activity {
         TextView t4 = (TextView) findViewById(R.id.text4);
         t4.setText(ss);
         t4.setMovementMethod(LinkMovementMethod.getInstance());
+        
+        TextView t5 = (TextView) findViewById(R.id.text5);
+        t5.setText(Html.fromHtml(HTML_DEMO));
     }
 }
