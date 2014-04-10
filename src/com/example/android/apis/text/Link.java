@@ -119,5 +119,9 @@ public class Link extends Activity {
         
         TextView t5 = (TextView) findViewById(R.id.text5);
         t5.setText(Html.fromHtml(HTML_DEMO));
+        
+        TextView t6 = (TextView) findViewById(R.id.text6);
+        t6.setText(Html.fromHtml(getString(R.string.link_within_string)));
+        t6.setMovementMethod(LinkMovementMethod.getInstance());
     }
 }

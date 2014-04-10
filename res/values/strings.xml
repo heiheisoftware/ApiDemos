@@ -1308,4 +1308,6 @@
         "\n<li>列表2</li></ol>"
     </string>
     
+    <string name="link_within_string">"直接在strings.xml文件中添加<![CDATA[<a href="http://www.baidu.com/">链接</a>]]>"</string>
+    
 </resources>
