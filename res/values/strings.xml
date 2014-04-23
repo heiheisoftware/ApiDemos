@@ -1298,16 +1298,12 @@
     <!-- 使用%%来输出，其实是java formatter的限制 -->
     <string name="symbol_dynamic_percent">"演示动态输出一个带百分号的数字："<xliff:g id="percent">%d</xliff:g>"%%"</string>
     <!-- xml预定义的实体以下五个，但是注意单双引号并不能使用 &apos; 和 &quot; -->
-    <string name="symbol_xml_predefine">
-        "演示xml预定义的5个实体（注意单双引号的实现）：\n小于号   &lt;   大于号   &gt; \n和号   &amp; \n双引号   \"    单引号   \'"
-    </string>
-    
-    <string name="symbol_list">
-        "演示列表的一种实现（但是这种实现灵活性不高）："
+    <string name="symbol_xml_predefine">        "演示xml预定义的5个实体（注意单双引号的实现）：\n小于号   &lt;   大于号   &gt; \n和号   &amp; \n双引号   \"    单引号   \'"</string>
+    <string name="symbol_list">        "演示列表的一种实现（但是这种实现灵活性不高）："
         "\n<ol><li>列表1</li>"
-        "\n<li>列表2</li></ol>"
-    </string>
-    
+        "\n<li>列表2</li></ol>"</string>
     <string name="link_within_string">"直接在strings.xml文件中添加<![CDATA[<a href="http://www.baidu.com/">链接</a>]]>"</string>
-    
+    <string name="title_activity_test">TestActivity</string>
+    <string name="action_settings">Settings</string>
+
 </resources>
