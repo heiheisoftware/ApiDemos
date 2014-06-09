@@ -27,6 +27,16 @@ import android.widget.Toast;
 
 public class TestActivity extends Activity {
 
+//    06-09 23:44:45.108 D/TestActivity(21272): beforeTextChanged:  start: 0 count: 0 after: 2
+//    06-09 23:44:45.108 D/TestActivity(21272): onTextChanged: 策略 start: 0 before: 0 count: 2
+//    06-09 23:44:45.148 D/TestActivity(21272): afterTextChanged: 策略
+//    06-09 23:44:50.618 D/TestActivity(21272): beforeTextChanged: 策略  start: 0 count: 0 after: 2
+//    06-09 23:44:50.618 D/TestActivity(21272): onTextChanged: 我去策略  start: 0 before: 0 count: 2
+//    06-09 23:44:50.658 D/TestActivity(21272): afterTextChanged: 我去策略 
+//    06-09 23:45:00.038 D/TestActivity(21272): beforeTextChanged: 策略 我去策略   start: 0 count: 0 after: 1
+//    06-09 23:45:00.048 D/TestActivity(21272): onTextChanged: 胡策略 我去策略   start: 0 before: 0 count: 1
+//    06-09 23:45:00.088 D/TestActivity(21272): afterTextChanged: 胡策略 我去策略  
+    
     private static final String TAG = "TestActivity";
 
     private static final int REQ_TO_LOGIN = 10;
@@ -54,27 +64,27 @@ public class TestActivity extends Activity {
         String contactName = "联系人";
         
         
-        SpannableString ss = new SpannableString("ABC");
-        Drawable d = getResources().getDrawable(R.drawable.ic_delete);
-        d.setBounds(0, 0, d.getIntrinsicWidth(), d.getIntrinsicHeight());
-//        d.setBounds(0, 0, 2256, 760);
-
-        ImageSpan span = new ImageSpan(d, "haha", ImageSpan.ALIGN_BASELINE);
-        ss.setSpan(span, 0, 3, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        et.setText(ss);
-        
-        final SpannableStringBuilder sb = new SpannableStringBuilder();
 //        addTag(contactName, sb);
 //        addTag(contactName, sb);
-        et.setText(sb);
         et.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                Log.d(TAG, "onTextChanged: " + s + " start: " + start + " before: " + before + " count: " + count);
-                
+            public void onTextChanged(CharSequence s, int start, int before,
+                    int count) {
+                CharSequence append = s.subSequence(start, start + count);
+                Log.d(TAG, "onTextChanged: " + s + " start: " + start + " before: " + before + " count: " + count
+                        + " append: " + append);
+
                 et.removeTextChangedListener(this);
-                
-                addTag(s.toString(), sb);
+                final SpannableStringBuilder sb = new SpannableStringBuilder();
+                addTag(append.toString(), sb);
+                sb.insert(0, et.getText().toString());
+
+                ImageSpan[] mSpans = et.getText().getSpans(0, et.length(), ImageSpan.class);
+                for (int i = mSpans.length - 1; i > -1; i--) {
+                    sb.setSpan(mSpans[i], start,
+                            mSpans[i].getSource().length() - 1,
+                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                }
                 et.setText(sb);
                 et.addTextChangedListener(this);
             }
