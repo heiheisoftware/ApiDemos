@@ -12,7 +12,7 @@
      distributed under the License is distributed on an "AS IS" BASIS,
      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
      See the License for the specific language governing permissions and
-     limitations under the License.
+     limitations under the License.
 -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
@@ -1305,5 +1305,6 @@
     <string name="link_within_string">"直接在strings.xml文件中添加<![CDATA[<a href="http://www.baidu.com/">链接</a>]]>"</string>
     <string name="title_activity_test">TestActivity</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_test_activity2">TestActivity2</string>
 
 </resources>

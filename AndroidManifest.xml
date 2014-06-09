@@ -12,7 +12,7 @@
      distributed under the License is distributed on an "AS IS" BASIS,
      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
      See the License for the specific language governing permissions and
-     limitations under the License.
+     limitations under the License.
 -->
 
 
@@ -21,7 +21,7 @@
      attribute brings in the Android platform namespace, and the package
      supplies a unique name for the application.  When writing your
      own application, the package name must be changed from "com.example.*"
-     to come from a domain that you own or have control over.
+     to come from a domain that you own or have control over.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.android.apis" >
@@ -46,7 +46,7 @@
 
     <!--
          We will request access to the camera, saying we require a camera
-         of some sort but not one with autofocus capability.
+         of some sort but not one with autofocus capability.
     -->
     <uses-permission android:name="android.permission.CAMERA" />
 
@@ -64,7 +64,7 @@
 
         <!--
              This is how we can request a library but still allow the app
-             to be installed if it doesn't exist.
+             to be installed if it doesn't exist.
         -->
         <uses-library
             android:name="com.example.will.never.exist"
@@ -264,7 +264,7 @@
 
         <!--
              This sample doesn't work with the new action bar, so use
-             the old style theme.
+             the old style theme.
         -->
         <activity
             android:name="com.example.android.apis.app.CustomTitle"
@@ -636,13 +636,13 @@
 
                 <!--
                      These are the interfaces supported by the service, which
-                     you can bind to.
+                     you can bind to.
                 -->
                 <action android:name="com.example.android.apis.app.IRemoteService" />
                 <action android:name="com.example.android.apis.app.ISecondary" />
                 <!--
                      This is an action code you can use to select the service
-                     without explicitly supplying the implementation class.
+                     without explicitly supplying the implementation class.
                 -->
                 <action android:name="com.example.android.apis.app.REMOTE_SERVICE" />
             </intent-filter>
@@ -871,7 +871,7 @@
              This is used to display a notification selected by the user
              from StatusBarNotifications.  Note the configuration here so
              that the activity layers on top of whatever the user is doing,
-             allowing them to press back to return.
+             allowing them to press back to return.
         -->
         <activity
             android:name="com.example.android.apis.app.NotificationDisplay"
@@ -3542,12 +3542,25 @@
         </activity>
         <activity
             android:name="com.example.android.apis.TestActivity"
+            android:launchMode="singleTask"
             android:label="测试" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.SAMPLE_CODE" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.android.apis.TestActivity2"
+            android:label="2" >
+        </activity>
+        <activity
+            android:name="com.example.android.apis.TestActivity3"
+            android:label="3" >
+        </activity>
+        <activity
+            android:name="com.example.android.apis.TestActivity4"
+            android:label="4" >
         </activity>
     </application>
 
