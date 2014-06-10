@@ -14,6 +14,7 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.TextWatcher;
+import android.text.TextUtils.TruncateAt;
 import android.text.style.ImageSpan;
 import android.util.Log;
 import android.view.Menu;
@@ -61,32 +62,40 @@ public class TestActivity extends Activity {
         });
 
         final EditText et = (EditText) findViewById(R.id.editText1);
-        String contactName = "联系人";
+//        String contactName = "联系人";
+//        et.setText(contactName);
+//        
+//        SpannableStringBuilder sb = new SpannableStringBuilder();
+//        addTag(contactName, sb);
+//        et.getEditableText().replace(0, contactName.length(), sb);
         
         
 //        addTag(contactName, sb);
 //        addTag(contactName, sb);
+        
+        
         et.addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence s, int start, int before,
                     int count) {
-                CharSequence append = s.subSequence(start, start + count);
-                Log.d(TAG, "onTextChanged: " + s + " start: " + start + " before: " + before + " count: " + count
-                        + " append: " + append);
+                Log.d(TAG, "onTextChanged: " + s + " start: " + start + " before: " + before + " count: " + count);
+                
+                String str = s.toString();
+                if (str.trim().length() > 0 && str.charAt(str.length() - 1) == SPE_CHA) {
+                    str = str.subSequence(0, str.length() - 1).toString();
+                    int iStart = str.lastIndexOf(SPE_CHA);
+                    if (iStart == -1) iStart = 0;
+                    CharSequence append = s.subSequence(iStart, str.length());
+                    
+                    Log.d(TAG, "onTextChanged 2: append: " + append);
 
-                et.removeTextChangedListener(this);
-                final SpannableStringBuilder sb = new SpannableStringBuilder();
-                addTag(append.toString(), sb);
-                sb.insert(0, et.getText().toString());
-
-                ImageSpan[] mSpans = et.getText().getSpans(0, et.length(), ImageSpan.class);
-                for (int i = mSpans.length - 1; i > -1; i--) {
-                    sb.setSpan(mSpans[i], start,
-                            mSpans[i].getSource().length() - 1,
-                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    et.removeTextChangedListener(this);
+                    final SpannableStringBuilder sb = new SpannableStringBuilder();
+                    addTag(append.toString(), sb);
+                    et.getEditableText().replace(iStart, str.length(), sb);
+                    et.getEditableText().append('\t');
+                    et.addTextChangedListener(this);
                 }
-                et.setText(sb);
-                et.addTextChangedListener(this);
             }
             
             @Override
@@ -101,13 +110,14 @@ public class TestActivity extends Activity {
         });
     }
 
+    public static final char SPE_CHA = ' ';
+    
     private void addTag(String contactName, final SpannableStringBuilder sb) {
         TextView tv = createContactTextView(contactName);
         BitmapDrawable bd = convertViewToDrawable(getResources(), tv);
         bd.setBounds(0, 0, bd.getIntrinsicWidth(), bd.getIntrinsicHeight());
-
-        sb.append(contactName + " ");
-        sb.setSpan(new ImageSpan(bd), sb.length() - (contactName.length() + 1), sb.length() - 1,
+        sb.append(contactName);
+        sb.setSpan(new ImageSpan(bd), 0, sb.length(),
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
     }
 
@@ -116,6 +126,9 @@ public class TestActivity extends Activity {
         TextView tv = new TextView(this);
         tv.setText(text);
         tv.setTextSize(13);
+        tv.setSingleLine(true);
+        tv.setEllipsize(TruncateAt.MIDDLE);
+        tv.setMaxEms(6);
         tv.setBackgroundResource(R.drawable.oval);
         tv.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.close, 0);
         return tv;
