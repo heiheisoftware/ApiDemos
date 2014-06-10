@@ -62,17 +62,6 @@ public class TestActivity extends Activity {
         });
 
         final EditText et = (EditText) findViewById(R.id.editText1);
-//        String contactName = "联系人";
-//        et.setText(contactName);
-//        
-//        SpannableStringBuilder sb = new SpannableStringBuilder();
-//        addTag(contactName, sb);
-//        et.getEditableText().replace(0, contactName.length(), sb);
-        
-        
-//        addTag(contactName, sb);
-//        addTag(contactName, sb);
-        
         
         et.addTextChangedListener(new TextWatcher() {
             @Override
@@ -83,17 +72,13 @@ public class TestActivity extends Activity {
                 String str = s.toString();
                 if (str.trim().length() > 0 && str.charAt(str.length() - 1) == SPE_CHA) {
                     str = str.subSequence(0, str.length() - 1).toString();
-                    int iStart = str.lastIndexOf(SPE_CHA);
-                    if (iStart == -1) iStart = 0;
+                    int iStart = str.lastIndexOf(SPE_CHA) + 1;
                     CharSequence append = s.subSequence(iStart, str.length());
-                    
-                    Log.d(TAG, "onTextChanged 2: append: " + append);
 
                     et.removeTextChangedListener(this);
-                    final SpannableStringBuilder sb = new SpannableStringBuilder();
-                    addTag(append.toString(), sb);
+                    SpannableStringBuilder sb = new SpannableStringBuilder();
+                    constructTag(append.toString(), sb);
                     et.getEditableText().replace(iStart, str.length(), sb);
-                    et.getEditableText().append('\t');
                     et.addTextChangedListener(this);
                 }
             }
@@ -112,7 +97,7 @@ public class TestActivity extends Activity {
 
     public static final char SPE_CHA = ' ';
     
-    private void addTag(String contactName, final SpannableStringBuilder sb) {
+    private void constructTag(String contactName, final SpannableStringBuilder sb) {
         TextView tv = createContactTextView(contactName);
         BitmapDrawable bd = convertViewToDrawable(getResources(), tv);
         bd.setBounds(0, 0, bd.getIntrinsicWidth(), bd.getIntrinsicHeight());
