@@ -1,6 +1,7 @@
 
 package com.example.android.apis;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -47,7 +48,11 @@ public class TestActivity extends Activity {
         intent.setClass(a, TestActivity.class);
         a.startActivityForResult(intent, reqCode);
     }
-
+//    private static final String PATH = "file://\\data\\data\\com.qihoo.yunpan\\shared_prefs\\com.qihoo.yunpan_preferences.xml";
+//    private static final String PATH = "file:///data/data/com.qihoo.yunpan/shared_prefs/com.qihoo.yunpan_preferences.xml";
+//    private static final String PATH = "file:///data/../data/com.qihoo.yunpan/shared_prefs/com.qihoo.yunpan_preferences.xml";
+//    private static final String PATH = "file://data/../data/data/com.qihoo.yunpan/shared_prefs/com.qihoo.yunpan_preferences.xml";
+    private static final String PATH = "/data/data/com.qihoo.yunpan/shared_prefs/com.qihoo.yunpan_preferences.xml";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +62,15 @@ public class TestActivity extends Activity {
         mBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                Intent intent = new Intent();
+                intent.setClassName("com.qihoo.yunpan","com.qihoo.yunpan.phone.activity.ThirdPartActivity");
+                intent.setAction("android.intent.action.SEND");
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("android.intent.extra.STREAM", Uri.parse(PATH));
+                bundle.putString("android.intent.extra.TEXT","test");
+                intent.putExtras(bundle);
+                intent.setType("text/*");
+                startActivity(intent);
             }
         });
 
