@@ -15,6 +15,9 @@ import android.view.inputmethod.InputMethodManager;
 
 import com.example.android.apis.R;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.File;
 
 /**
@@ -158,5 +161,22 @@ public class Util {
     public static void startActivityAnim(Activity activity, Intent intent) {
         activity.startActivity(intent);
         activity.overridePendingTransition(R.anim.start_activity_in_from_right, R.anim.start_activity_out_to_left);
+    }
+    
+    /**
+     * 使用JSONObject.optString()如果为null，会返回"null"字符串，因此使用以下方法替代
+     * @param jObj
+     * @param key
+     * @return
+     */
+    public static String optString(JSONObject jObj, String key) {
+        if (jObj.has(key)) {
+            try {
+                return jObj.getString(key);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return "";
     }
 }
