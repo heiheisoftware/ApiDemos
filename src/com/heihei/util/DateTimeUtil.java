@@ -4,7 +4,7 @@ package com.heihei.util;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class TimeUtil {
+public class DateTimeUtil {
 
     public static final SimpleDateFormat DF_WEEK = new SimpleDateFormat("E");
     public static final SimpleDateFormat DF_YEAR_MONTH_DAY = new SimpleDateFormat("yyyy年M月d日");
