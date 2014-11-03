@@ -27,6 +27,11 @@ import java.io.File;
  */
 public class Util {
 
+    /**
+     * sim卡是不是可用
+     * @param context
+     * @return true sim卡可用，否则不可用
+     */
     public static boolean isSimReady(Context context) {
         TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
         return tm.getSimState() == TelephonyManager.SIM_STATE_READY;
