@@ -19,6 +19,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.io.FileWriter;
 
 /**
  * 编码解码库（md5 base64等）http://commons.apache.org/proper/commons-codec/
@@ -26,22 +27,6 @@ import java.io.File;
  *
  */
 public class Util {
-
-    /**
-     * sim卡是不是可用
-     * @param context
-     * @return true sim卡可用，否则不可用
-     */
-    public static boolean isSimReady(Context context) {
-        TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-        return tm.getSimState() == TelephonyManager.SIM_STATE_READY;
-    }
-
-    public static boolean isNetworkConnected(Context context) {
-        ConnectivityManager connectivity = (ConnectivityManager)
-                context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        return connectivity.getActiveNetworkInfo() != null;
-    }
 
     public static void hideKeyBoard(Context context, View view) {
         if (context == null || view == null)
@@ -78,7 +63,7 @@ public class Util {
         v.setDrawingCacheEnabled(false); // clear drawing cache
         return b;
     }
-
+    
     /**
      * 
      * @param file
@@ -166,6 +151,27 @@ public class Util {
     public static void startActivityAnim(Activity activity, Intent intent) {
         activity.startActivity(intent);
         activity.overridePendingTransition(R.anim.start_activity_in_from_right, R.anim.start_activity_out_to_left);
+    }
+
+    /**
+     * sim卡是不是可用
+     * @param context
+     * @return true sim卡可用，否则不可用
+     */
+    public static boolean isSimReady(Context context) {
+        TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        return tm.getSimState() == TelephonyManager.SIM_STATE_READY;
+    }
+
+    /**
+     * 网络是否可用
+     * @param context
+     * @return
+     */
+    public static boolean isNetworkConnected(Context context) {
+        ConnectivityManager connectivity = (ConnectivityManager)
+                context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        return connectivity.getActiveNetworkInfo() != null;
     }
     
     /**
