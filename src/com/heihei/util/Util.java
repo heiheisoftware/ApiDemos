@@ -8,10 +8,13 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.Uri;
+import android.os.Handler;
+import android.os.Looper;
 import android.telephony.TelephonyManager;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Toast;
 
 import com.example.android.apis.R;
 
@@ -20,6 +23,7 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.lang.ref.SoftReference;
 
 /**
  * 编码解码库（md5 base64等）http://commons.apache.org/proper/commons-codec/
@@ -189,5 +193,40 @@ public class Util {
             }
         }
         return "";
+    }
+    
+    /***********************************************************
+     * 
+     *                     Toast相关
+     * 
+     ***********************************************************/
+    private static SoftReference<Toast> sToastRef = null;
+    public static void hideToast() {
+        if (sToastRef != null) {
+            Toast previousToast = sToastRef.get();
+            if (previousToast != null) {
+                previousToast.cancel();
+            }
+        }
+    }
+
+    public static void showToast(Context context, int s) {
+        showToast(context, context.getString(s));
+    }
+
+    public static void showToast(final Context context, final String s) {
+        if (Looper.getMainLooper() == Looper.myLooper()) {
+            Toast toast = Toast.makeText(context, s, Toast.LENGTH_SHORT);
+            hideToast();
+            toast.show();
+            sToastRef = new SoftReference<Toast>(toast);
+        } else {
+            new Handler(Looper.getMainLooper()).post(new Runnable() {
+                @Override
+                public void run() {
+                    showToast(context, s);
+                }
+            });
+        }
     }
 }
