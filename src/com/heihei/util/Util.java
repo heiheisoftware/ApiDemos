@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.telephony.TelephonyManager;
@@ -24,6 +25,8 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.FileWriter;
 import java.lang.ref.SoftReference;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 /**
  * 编码解码库（md5 base64等）http://commons.apache.org/proper/commons-codec/
@@ -228,5 +231,29 @@ public class Util {
                 }
             });
         }
+    }
+    
+    /**
+     * 获取Build文件里没有的一些system prop
+     * @param key
+     * @return
+     */
+    public static String getSysProp(String key) {
+        try {
+            Method method = Build.class.getDeclaredMethod("getString", String.class);
+            method.setAccessible(true);
+            String verStr = (String) method.invoke(null, key);
+            return verStr;
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+
+        return "";
     }
 }
