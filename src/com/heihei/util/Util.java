@@ -2,8 +2,12 @@
 package com.heihei.util;
 
 import android.app.Activity;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningTaskInfo;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
@@ -27,6 +31,8 @@ import java.io.FileWriter;
 import java.lang.ref.SoftReference;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 编码解码库（md5 base64等）http://commons.apache.org/proper/commons-codec/
@@ -256,4 +262,34 @@ public class Util {
 
         return "";
     }
+    
+    /**
+     * 判断当前界面是否是桌面
+     */
+    public static boolean isHome(Context c) {
+        ActivityManager mActivityManager = (ActivityManager) c.getSystemService(Context.ACTIVITY_SERVICE);
+        List<RunningTaskInfo> rti = mActivityManager.getRunningTasks(1);
+        if (rti == null || rti.size() == 0) {
+            return false;
+        }
+
+        return getHomes(c).contains(rti.get(0).topActivity.getPackageName());
+    }
+
+    /**
+     * 获得属于桌面的应用的应用包名称
+     * @return 返回包含所有包名的字符串列表
+     */
+    private static List<String> getHomes(Context c) {
+        List<String> names = new ArrayList<String>();
+        PackageManager packageManager = c.getPackageManager();
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        List<ResolveInfo> resolveInfo = packageManager.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
+        for (ResolveInfo ri : resolveInfo) {
+            names.add(ri.activityInfo.packageName);
+        }
+        return names;
+    }
+
 }
