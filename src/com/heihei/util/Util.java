@@ -31,7 +31,11 @@ import java.io.FileWriter;
 import java.lang.ref.SoftReference;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -291,5 +295,25 @@ public class Util {
         }
         return names;
     }
+    
+    /**
+     * 对以日期命名的文件进行倒叙排序
+     */
+    public static void sortZa(String[] fileList) {
+        Arrays.sort(fileList, new Comparator<String>() {
+            DateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+            @Override
+            public int compare(String lhs, String rhs) {
+                try {
+                    String d1 = lhs.substring(0, lhs.indexOf('.'));
+                    String d2 = rhs.substring(0, rhs.indexOf('.'));
+                    return f.parse(d2).compareTo(f.parse(d1));
+                } catch (Exception e) {
+                    return 0;
+                }
+            }
+        });
+    }
+
 
 }
